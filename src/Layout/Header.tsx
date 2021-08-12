@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography } from "@material-ui/core"
-import { useStyles } from "../../Styles"
-import EtanaLogo from "../Shared/Logos/EtanaLogo"
+import EtanaLogo from "../Sections/Shared/Logos/EtanaLogo"
+import { useStyles } from "../Styles"
 
 const Header = () => {
     const { header } = useStyles()

@@ -47,18 +47,14 @@ export const useStyles = makeStyles({
         width: "40px",
         ...baseStyles.m1,
     },
-    stepperCardHeader: {
-        width: "100%",
+    selectTypeContainer: {
+        textAlign: "center",
+        maxWidth: "800px",
+        maxHeight: "300px",
         ...baseStyles.p2,
     },
-    stepperCardContent: {
-        display: "flex",
-        justifyContent: "center",
-        ...baseStyles.p5,
-    },
-    stepperCardFooter: {
-        display: "flex",
-        justifyContent: "space-between",
+    redirectCard: {
+        cursor: "pointer",
         ...baseStyles.p2,
     },
 });

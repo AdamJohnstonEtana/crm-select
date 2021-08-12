@@ -1,8 +1,8 @@
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import './App.css';
-import Apply from './Sections/Apply';
-import Content from './Sections/Layout/Content';
-import Header from './Sections/Layout/Header';
+import Content from './Layout/Content';
+import Header from './Layout/Header';
+import Apply from './Sections/SelectType';
 
 const theme = createTheme({
   palette: {

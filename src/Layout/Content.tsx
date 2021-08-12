@@ -1,4 +1,5 @@
-import { useStyles } from "../../Styles"
+import { Grid } from "@material-ui/core"
+import { useStyles } from "../Styles"
 
 interface Props {
     children: JSX.Element
@@ -8,9 +9,9 @@ const Content = ({ children }: Props) => {
     const { content } = useStyles()
 
     return (
-        <div className={content}>
+        <Grid container justifyContent="center" className={content}>
             {children}
-        </div>
+        </Grid>
     )
 }
 
