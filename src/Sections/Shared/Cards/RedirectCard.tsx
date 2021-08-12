@@ -10,7 +10,7 @@ interface Props {
 const RedirectCard = ({ redirectURL, title, description }: Props) => {
     const { redirectCard } = useStyles()
 
-    const onClick = () => window.location.href = redirectURL
+    const onClick = () => window.location.replace(redirectURL)
 
     return (
         <Card className={redirectCard} onClick={onClick}>
