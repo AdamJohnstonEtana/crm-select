@@ -38,4 +38,6 @@ steps:
       - "CLOUDSDK_CONTAINER_CLUSTER=etana"
       - "TILLERLESS=true"
       - "TILLER_NAMESPACE=${_ENV}"
+    tags: ["cloud-builders-community"]
+
 timeout: 1200s
