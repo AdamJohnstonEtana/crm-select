@@ -14,14 +14,14 @@ steps:
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
   # Helm
-  - name: "gcr.io/cloud-builders/docker"
-    args:
-      - build
-      - --tag=gcr.io/$PROJECT_ID/helm:3.6.3
-      - --tag=gcr.io/$PROJECT_ID/helm:latest
-      - --build-arg
-      - HELM_VERSION=v3.6.3
-      - .
+  # - name: "gcr.io/cloud-builders/docker"
+  #   args:
+  #     - build
+  #     - --tag=gcr.io/$PROJECT_ID/helm:3.6.3
+  #     - --tag=gcr.io/$PROJECT_ID/helm:latest
+  #     - --build-arg
+  #     - HELM_VERSION=v3.6.3
+  #     - .
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
@@ -33,11 +33,11 @@ steps:
       - dev
       - -f
       - ./ops/values-dev.yaml
-    env:
-      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
-      - "CLOUDSDK_CONTAINER_CLUSTER=etana"
-      - "TILLERLESS=true"
-      - "TILLER_NAMESPACE=${_ENV}"
-    tags: ["cloud-builders-community"]
+    # env:
+    #   - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
+    #   - "CLOUDSDK_CONTAINER_CLUSTER=etana"
+    #   - "TILLERLESS=true"
+    #   - "TILLER_NAMESPACE=${_ENV}"
+    # tags: ["cloud-builders-community"]
 
 timeout: 1200s
