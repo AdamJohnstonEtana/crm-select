@@ -18,13 +18,13 @@ steps:
     args:
       - chart
       - pull
-      - us-central1-docker.pkg.dev/etana-demo/repo/enterprise:latest
+      - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0
 
   # Unpack Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
       - chart
       - export
-      - us-central1-docker.pkg.dev/etana-demo/repo/enterprise:latest
+      - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest:0.1.0
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
