@@ -13,12 +13,18 @@ steps:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
-  - name: "gcr.io/cloud-builders/docker"
+  # Pull Helm Chart
+  - name: gcr.io/$PROJECT_ID/helm
     args:
-      - build
-      - -t
+      - chart
+      - pull
       - us-central1-docker.pkg.dev/etana-demo/repo/enterprise:latest
-      - .
+
+  # Unpack Helm Chart
+  - name: gcr.io/$PROJECT_ID/helm
+      - chart
+      - export
+      - us-central1-docker.pkg.dev/etana-demo/repo/enterprise:latest
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
