@@ -17,12 +17,12 @@ steps:
   - name: gcr.io/$PROJECT_ID/helm
     args:
       - upgrade
-      - enterprise-dev
+      - enterprise-${_ENV}
       - ~/ops/enterprise
       - -n
-      - dev
+      - ${_ENV}
       - -f
-      - ~/ops/values-dev.yaml
+      - ~/ops/values-${_ENV}.yaml
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=etana
