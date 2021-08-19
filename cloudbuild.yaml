@@ -33,11 +33,10 @@ steps:
       - dev
       - -f
       - ./ops/values-dev.yaml
-    # env:
-    #   - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
-    #   - "CLOUDSDK_CONTAINER_CLUSTER=etana"
-    #   - "TILLERLESS=true"
-    #   - "TILLER_NAMESPACE=${_ENV}"
-    # tags: ["cloud-builders-community"]
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
+      - "CLOUDSDK_CONTAINER_CLUSTER=etana"
+      - "TILLERLESS=true"
+      - "TILLER_NAMESPACE=${_ENV}"
 
 timeout: 1200s
