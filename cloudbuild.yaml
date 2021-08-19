@@ -1,22 +1,32 @@
 steps:
-  # Build Container
+  # Build
   - name: "gcr.io/cloud-builders/docker"
     args:
       - build
       - -t
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
       - .
-  # Push Container
+
+  # Push
   - name: "gcr.io/cloud-builders/docker"
     args:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
-  # Deploy Containers
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args: ["pwd"]
+
+  # Deploy
   - name: gcr.io/$PROJECT_ID/helm
     args:
-      - helm upgrade enterprise-dev,
+      - helm
+      - upgrade
+      - enterprise-dev,
       - ./ops/enterprise,
       - -n,
       - dev,
       - -f,
       - ./ops/values-dev.yaml,
+
+timeout: 1200s
