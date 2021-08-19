@@ -13,14 +13,6 @@ steps:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
-  # Credentials
-  - name: "gcr.io/cloud-builders/kubectl"
-    env:
-      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
-      - "CLOUDSDK_CONTAINER_CLUSTER=etana"
-      - "KUBECONFIG=/workspace/.kube/config"
-    args: ["cluster-info"]
-
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
     args:
