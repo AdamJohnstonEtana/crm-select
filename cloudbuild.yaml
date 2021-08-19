@@ -1,9 +1,22 @@
 steps:
   # Build Container
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/crm-select-${_ENV}", "."]
+    args:
+      - build
+      - -t
+      - gcr.io/$PROJECT_ID/crm-select-${_ENV}
+      - .
   # Push Container
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/crm-select-${_ENV}"]
+    args:
+      - push
+      - gcr.io/$PROJECT_ID/crm-select-${_ENV}
   # Deploy Containers
-  - name: gcr.io/$PROJECT_ID/scripts/update-${_ENV}.sh
+  - name: gcr.io/$PROJECT_ID/helm
+    args:
+      - helm upgrade enterprise-dev,
+      - ./ops/enterprise,
+      - -n,
+      - dev,
+      - -f,
+      - ./ops/values-dev.yaml,
