@@ -26,6 +26,5 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
       - "CLOUDSDK_CONTAINER_CLUSTER=etana"
-    tags: ["cloud-builders-community"]
 
 timeout: 1200s
