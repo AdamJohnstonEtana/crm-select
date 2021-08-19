@@ -6,6 +6,4 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/crm-select-${_ENV}"]
   # Deploy Containers
-  - name: gcr.io/cloud-builders/gcloud
-    entrypoint: bash
-    args: ["cd", "~/scripts", "&&", "./update-${_ENV}.sh"]
+  - name: gcr.io/$PROJECT_ID/scripts/update-${_ENV}.sh
