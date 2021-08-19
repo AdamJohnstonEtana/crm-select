@@ -24,7 +24,7 @@ steps:
   - name: gcr.io/$PROJECT_ID/helm
       - chart
       - export
-      - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest:0.1.0
+      - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
