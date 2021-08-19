@@ -13,14 +13,15 @@ steps:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
-  # Cluster
-  - name: gcr.io/cloud-builders/kubectl
+  # Helm
+  - name: "gcr.io/cloud-builders/docker"
     args:
-      - cluster-info
-    env:
-      - CLOUDSDK_COMPUTE_REGION=us-central1-c
-      - CLOUDSDK_CONTAINER_CLUSTER=etana
-      - KUBECONFIG=/workspace/.kube/config
+      - build
+      - --tag=gcr.io/$PROJECT_ID/helm:3.6.3
+      - --tag=gcr.io/$PROJECT_ID/helm:latest
+      - --build-arg
+      - HELM_VERSION=v3.6.3
+      - .
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
