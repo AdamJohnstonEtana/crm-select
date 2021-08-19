@@ -13,6 +13,13 @@ steps:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - -t
+      - us-central1-docker.pkg.dev/etana-demo/repo/enterprise:latest
+      - .
+
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
     args:
