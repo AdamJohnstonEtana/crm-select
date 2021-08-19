@@ -8,4 +8,4 @@ steps:
   # Deploy Containers
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: bash
-    args: ["cd", "./scripts", "&&", "./update-${_ENV}.sh"]
+    args: ["cd", "~/scripts", "&&", "./update-${_ENV}.sh"]
