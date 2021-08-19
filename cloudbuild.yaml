@@ -18,11 +18,11 @@ steps:
     args:
       - upgrade
       - enterprise-${_ENV}
-      - ~/ops/enterprise
+      - helm
       - -n
       - ${_ENV}
       - -f
-      - ~/ops/values-${_ENV}.yaml
+      - ./values-${_ENV}.yaml
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=etana
