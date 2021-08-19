@@ -18,7 +18,7 @@ steps:
     args:
       - upgrade
       - enterprise-${_ENV}
-      - helm
+      - us-central1-docker.pkg.dev/etana-demo/helm/app
       - -n
       - ${_ENV}
       - -f
