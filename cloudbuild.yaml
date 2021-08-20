@@ -4,9 +4,7 @@ steps:
     args:
       - -c
       - |-
-      - echo test
-      - pwd
-      - ls
+      - cd scripts && ls
 
   # Build
   - name: "gcr.io/cloud-builders/docker"
