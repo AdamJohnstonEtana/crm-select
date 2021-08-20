@@ -3,7 +3,6 @@ steps:
     entrypoint: "bash"
     args:
       - "-c"
-      - "|-"
       - "cd scripts && ls"
 
   # Build
