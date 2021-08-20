@@ -19,7 +19,7 @@ steps:
     args:
       - "-c"
       - |
-        cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev \
+        echo ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev \
         && helm chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
         && helm chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
         && ls \
