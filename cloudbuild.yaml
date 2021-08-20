@@ -3,8 +3,7 @@ steps:
     entrypoint: "bash"
     args:
       - "-c"
-      - "pwd"
-      - "ls"
+      - "cd adamjohnston_etana"
 
   # Build
   - name: "gcr.io/cloud-builders/docker"
