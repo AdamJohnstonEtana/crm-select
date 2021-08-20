@@ -35,7 +35,8 @@ const baseStyles = {
 
 export const useStyles = makeStyles({
     header: {
-        backgroundColor: "#184A94"
+        // backgroundColor: "#184A94"
+        backgroundColor: "red"
     },
     content: {
         minHeight: "100vh",
