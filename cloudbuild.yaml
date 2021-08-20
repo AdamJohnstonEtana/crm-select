@@ -13,6 +13,15 @@ steps:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
+  # Helm Auth
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - gcloud
+      - auth
+      - configure-docker
+      - us-central1-docker.pkg.dev
+
   # Pull Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
     args:
