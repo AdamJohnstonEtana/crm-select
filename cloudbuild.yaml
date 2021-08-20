@@ -1,4 +1,9 @@
 steps:
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - ls
+
   # Build
   - name: "gcr.io/cloud-builders/docker"
     args:
@@ -12,11 +17,6 @@ steps:
     args:
       - push
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
-
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: "bash"
-    args:
-      - pwd
 
   # Helm Auth
   - name: "gcr.io/cloud-builders/gcloud"
