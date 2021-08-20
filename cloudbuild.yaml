@@ -19,6 +19,9 @@ steps:
       - chart
       - pull
       - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
+      - "CLOUDSDK_CONTAINER_CLUSTER=etana"
 
   # Unpack Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
@@ -26,6 +29,9 @@ steps:
       - chart
       - export
       - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
+      - "CLOUDSDK_CONTAINER_CLUSTER=etana"
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
