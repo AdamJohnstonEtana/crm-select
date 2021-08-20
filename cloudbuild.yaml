@@ -19,10 +19,10 @@ steps:
     args:
       - "-c"
       - |
-        echo ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev \
-        && helm chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
-        && helm chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
-        && helm upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f enterprise/values-${_ENV}.yaml
+        echo ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev
+        helm chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0
+        helm chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0
+        helm upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f enterprise/values-${_ENV}.yaml
     env:
       - HELM_EXPERIMENTAL_OCI=1
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
