@@ -2,9 +2,9 @@ steps:
   - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "bash"
     args:
-      - -c
-      - |-
-      - cd scripts && ls
+      - "-c"
+      - "|-"
+      - "cd scripts && ls"
 
   # Build
   - name: "gcr.io/cloud-builders/docker"
