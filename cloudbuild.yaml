@@ -19,6 +19,10 @@ steps:
     args:
       - "-c"
       - "cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
+    env:
+      - HELM_EXPERIMENTAL_OCI=1
+      - CLOUDSDK_COMPUTE_ZONE=us-central1-c
+      - CLOUDSDK_CONTAINER_CLUSTER=etana
 
   # Pull Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
