@@ -26,10 +26,11 @@ steps:
 
   # Pull Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
+    entrypoint: "bash"
     args:
-      - chart
-      - pull
-      - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest
+      - "-c"
+      - "cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
+      - "chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest"
     env:
       - HELM_EXPERIMENTAL_OCI=1
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
