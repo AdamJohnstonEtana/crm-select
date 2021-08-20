@@ -14,7 +14,7 @@ steps:
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
   # Helm Auth
-  - name: "gcr.io/cloud-builders/gcloud"
+  - name: gcr.io/$PROJECT_ID/helm
     entrypoint: "bash"
     args:
       - "-c"
