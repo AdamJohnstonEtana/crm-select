@@ -1,10 +1,4 @@
 steps:
-  - name: "gcr.io/cloud-builders/gcloud"
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - "cd adamjohnston_etana"
-
   # Build
   - name: "gcr.io/cloud-builders/docker"
     args:
@@ -23,10 +17,8 @@ steps:
   - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "bash"
     args:
-      - gcloud
-      - auth
-      - configure-docker
-      - us-central1-docker.pkg.dev
+      - "-c"
+      - "cat $GCLOUD_SERVICE_KEY | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
 
   # Pull Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
@@ -63,5 +55,7 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
       - "CLOUDSDK_CONTAINER_CLUSTER=etana"
+      - "TILLERLESS=true"
+      - "TILLER_NAMESPACE=${_ENV}"
 
 timeout: 1200s
