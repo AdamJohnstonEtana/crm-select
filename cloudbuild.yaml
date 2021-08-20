@@ -1,17 +1,17 @@
 steps:
-  # Build
-  - name: "gcr.io/cloud-builders/docker"
-    args:
-      - build
-      - -t
-      - gcr.io/$PROJECT_ID/crm-select-${_ENV}
-      - .
+  # # Build
+  # - name: "gcr.io/cloud-builders/docker"
+  #   args:
+  #     - build
+  #     - -t
+  #     - gcr.io/$PROJECT_ID/crm-select-${_ENV}
+  #     - .
 
-  # Push
-  - name: "gcr.io/cloud-builders/docker"
-    args:
-      - push
-      - gcr.io/$PROJECT_ID/crm-select-${_ENV}
+  # # Push
+  # - name: "gcr.io/cloud-builders/docker"
+  #   args:
+  #     - push
+  #     - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
   # Helm Auth
   - name: gcr.io/$PROJECT_ID/helm
