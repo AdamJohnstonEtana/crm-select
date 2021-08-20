@@ -39,5 +39,6 @@ steps:
       - CLOUDSDK_CONTAINER_CLUSTER=etana
       - TILLERLESS=true
       - TILLER_NAMESPACE=${_ENV}
+      - KUBECONFIG=/workspace/.kube/config
 
 timeout: 1200s
