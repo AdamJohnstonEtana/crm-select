@@ -20,10 +20,10 @@ steps:
       - "-c"
       - |
         cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev \
-        && chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
-        && chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
+        && helm chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
+        && helm chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
         && ls \
-        && upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f ./values-${_ENV}.yaml \
+        && helm upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f ./values-${_ENV}.yaml \
         && echo done
     env:
       - HELM_EXPERIMENTAL_OCI=1
