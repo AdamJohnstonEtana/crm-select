@@ -14,14 +14,14 @@ steps:
       - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
   # Connect
-  # - name: gcr.io/cloud-builders/kubectl
-  #   id: Configure kubectl
-  #   args:
-  #     - cluster-info
-  #   env:
-  #     - CLOUDSDK_COMPUTE_ZONE=us-central1-c
-  #     - CLOUDSDK_CONTAINER_CLUSTER=etana
-  #     - KUBECONFIG=/workspace/.kube/config
+  - name: gcr.io/cloud-builders/kubectl
+    id: Configure kubectl
+    args:
+      - cluster-info
+    env:
+      - CLOUDSDK_COMPUTE_ZONE=us-central1-c
+      - CLOUDSDK_CONTAINER_CLUSTER=etana
+      - KUBECONFIG=/workspace/.kube/config
 
   # Deploy
   - name: gcr.io/$PROJECT_ID/helm
