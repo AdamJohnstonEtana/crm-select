@@ -22,14 +22,13 @@ steps:
         echo ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev \
         && helm chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
         && helm chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0 \
-        && ls \
-        && helm upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f enterprise/values-${_ENV}.yaml \
-        && echo done
+        && helm upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f enterprise/values-${_ENV}.yaml
     env:
       - HELM_EXPERIMENTAL_OCI=1
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=etana
-      - "TILLERLESS=true"
-      - "TILLER_NAMESPACE=${_ENV}"
+      - TILLERLESS=true
+      - TILLER_NAMESPACE=${_ENV}
+      - KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 timeout: 1200s
