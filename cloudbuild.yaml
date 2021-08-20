@@ -39,6 +39,5 @@ steps:
       - CLOUDSDK_CONTAINER_CLUSTER=etana
       - TILLERLESS=true
       - TILLER_NAMESPACE=${_ENV}
-      - KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 timeout: 1200s
