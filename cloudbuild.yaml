@@ -18,7 +18,7 @@ steps:
     entrypoint: "bash"
     args:
       - "-c"
-      - "cat $GCLOUD_SERVICE_KEY | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
+      - "cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
 
   # Pull Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
