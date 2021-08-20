@@ -13,53 +13,19 @@ steps:
   #     - push
   #     - gcr.io/$PROJECT_ID/crm-select-${_ENV}
 
-  # Helm Auth
-  - name: gcr.io/$PROJECT_ID/helm
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - "cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
-    env:
-      - HELM_EXPERIMENTAL_OCI=1
-      - CLOUDSDK_COMPUTE_ZONE=us-central1-c
-      - CLOUDSDK_CONTAINER_CLUSTER=etana
-
   # Pull Helm Chart
   - name: gcr.io/$PROJECT_ID/helm
     entrypoint: "bash"
     args:
       - "-c"
       - "cat ${_KEY} | helm registry login -u _json_key_base64 --password-stdin https://us-central1-docker.pkg.dev"
-      - "chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest"
+      - "chart pull us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0"
+      - "chart export us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:0.1.0"
+      - "upgrade enterprise-${_ENV} enterprise -n ${_ENV} -f ./values-${_ENV}.yaml"
     env:
       - HELM_EXPERIMENTAL_OCI=1
       - CLOUDSDK_COMPUTE_ZONE=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=etana
-
-  # Unpack Helm Chart
-  - name: gcr.io/$PROJECT_ID/helm
-    args:
-      - chart
-      - export
-      - us-central1-docker.pkg.dev/${PROJECT_ID}/repo/enterprise:latest
-    env:
-      - HELM_EXPERIMENTAL_OCI=1
-      - CLOUDSDK_COMPUTE_ZONE=us-central1-c
-      - CLOUDSDK_CONTAINER_CLUSTER=etana
-
-  # Deploy
-  - name: gcr.io/$PROJECT_ID/helm
-    args:
-      - upgrade
-      - enterprise-${_ENV}
-      - enterprise
-      - -n
-      - ${_ENV}
-      - -f
-      - ./values-${_ENV}.yaml
-    env:
-      - "CLOUDSDK_COMPUTE_ZONE=us-central1-c"
-      - "CLOUDSDK_CONTAINER_CLUSTER=etana"
       - "TILLERLESS=true"
       - "TILLER_NAMESPACE=${_ENV}"
 
