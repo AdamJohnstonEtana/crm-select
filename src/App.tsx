@@ -7,8 +7,7 @@ import Apply from './Sections/SelectType';
 const theme = createTheme({
   palette: {
     primary: {
-      // main: '#184A94'
-      main: '#5AB548'
+      main: '#184A94'
     },
     secondary: {
       main: '#5AB548'
