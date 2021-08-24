@@ -54,4 +54,4 @@ export const useStyles = makeStyles({
         cursor: "pointer",
         ...baseStyles.p2,
     },
-});
+}, { index: 1 });
